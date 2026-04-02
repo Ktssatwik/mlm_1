@@ -1,0 +1,61 @@
+ML Pipeline
+|-- 1) Problem Understanding
+|   |-- Define objective (predict diabetes outcome: 0/1)
+|   |-- Identify target and feature columns
+|   |-- Define success metrics (accuracy, precision, recall, F1, ROC-AUC)
+|   `-- Note constraints and assumptions
+|
+|-- 2) Data Collection
+|   |-- Load dataset (CSV/database/API)
+|   |-- Check shape, columns, dtypes
+|   `-- Verify target availability and consistency
+|
+|-- 3) Train-Test Split
+|   |-- Separate X (features) and y (target)
+|   |-- Split data (for example, 80/20)
+|   |-- Set random_state for reproducibility
+|   `-- Use stratify=y when class imbalance exists
+|
+|-- 4) EDA (Mainly on Train Data)
+|   |-- Summary stats (describe, quantiles, median)
+|   |-- Missing/invalid value analysis (including placeholder zeros)
+|   |-- Target class distribution
+|   |-- Correlation with target
+|   `-- Visualizations (histogram, boxplot, heatmap, countplot)
+|
+|-- 5) Preprocessing and Feature Engineering
+|   |-- Replace invalid placeholders (e.g., 0 -> NaN in selected columns)
+|   |-- Impute missing values using train statistics (mean/median)
+|   |-- Handle outliers (IQR/percentile capping using train bounds)
+|   |-- Drop weak/leaky/noisy features if needed
+|   |-- Encode categorical features (if any)
+|   |-- Scale/standardize features (if model requires)
+|   `-- Apply same transformations to test data
+|
+|-- 6) Model Selection
+|   |-- Pick baseline candidates (Logistic Regression, Random Forest, XGBoost)
+|   |-- Train baseline versions
+|   `-- Compare validation metrics and shortlist model(s)
+|
+|-- 7,8) Hyperparameter Tuning + K-Fold CV
+|   |-- Define parameter search space
+|   |-- Run GridSearchCV/RandomizedSearchCV
+|   |-- Use proper scoring metric (ROC-AUC/F1/etc.)
+|   `-- Select best model + best params
+|
+|-- 9) Final Training (Train Set)
+|   |-- Refit best model on full training data
+|   `-- Save model + preprocessing artifacts (imputer/scaler)
+|
+|-- 10) Final Evaluation (Untouched Test Set)
+|   |-- Predict once on test data
+|   |-- Evaluate metrics (accuracy, precision, recall, F1, ROC-AUC)
+|   |-- Confusion matrix + classification report
+|   `-- Error analysis on misclassified samples
+|
+`-- 11) Deployment
+    |-- Build inference pipeline (same preprocessing + model)
+    |-- Version artifacts and configuration
+    |-- Expose via API/UI
+    |-- Monitor performance and data drift
+    `-- Schedule retraining cycle
