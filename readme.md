@@ -100,3 +100,8 @@ You will see:
 - Add input validation for categorical heart fields (`cp`, `restecg`, `slope`, `thal`)
 - Add model evaluation report command in CLI
 - Add Streamlit/Flask UI on top of the current logic
+
+
+### Note 
+
+THIS IS A FUN PROJECT , IT HAS NOTHING TO DO IF SOMEOINE HAS DIABETICS OR HEART DISEASES , DONOT REPLY ON THEN MODEL OUTPUT , PLEASE REFER A DOCTOR / SPECIALIST
